@@ -31,11 +31,13 @@
 }
 
 .white-piece {
-    color: #f00;
+    font-size: 25px;
+    color: #fff;
     -webkit-text-stroke: 0.4px #000;
 }
 
 .black-piece {
+    font-size: 25px;
     color: #000;
     -webkit-text-stroke: 0.1px #fff;
 }
