@@ -1,26 +1,20 @@
-const CELL_COUNT = 8
-const ROW_COUNT = CELL_COUNT
-
-let row = (rowIndex) => {
-    return new Array(CELL_COUNT)
+let row = (rowIndex, cellCount) => {
+    return new Array(cellCount)
         .fill(null)
         .map((_, cellIndex) => {
             const isBlack = rowIndex % 2 ===0 ? cellIndex % 2 !== 0 : cellIndex % 2 === 0 ;
-            return `<div class="cell ${isBlack ? 'black' : 'white'}"></div>`
+            return `<div class="cell ${isBlack ? 'black' : 'white'}">${rowIndex}</div>`
         })
-        .join("");
+        .join('');
 }
 
-/*let row1 = new Array(CELL_COUNT).fill(null).map(() => `<div class="cell">1</div>`).join("");*/
-
-
-const renderBoard = () => {
-    let board = new Array(ROW_COUNT)
+const renderBoard = (store) => {
+    let board = new Array(store.ROW_COUNT)
         .fill(null)
-        .map((_, index) => `<div class="row">${row(index)}</div>`)
-        .join("");
+        .map((_, index) => `<div class='row'>${row(index, store.CELL_COUNT)}</div>`)
+        .join('');
     return `
-        <div id="board">
+        <div id='board'>
             ${board}
         </div>
     `;

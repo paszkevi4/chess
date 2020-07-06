@@ -20,8 +20,22 @@
     width: 40px;
     height: 40px;
     background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: blue;
 }
 
 .black {
     background: #000;
+}
+
+.white-piece {
+    color: #fff;
+    -webkit-text-stroke: 0.1px #000;
+}
+
+.black-piece {
+    color: #000;
+    -webkit-text-stroke: 0.1px #fff;
 }
