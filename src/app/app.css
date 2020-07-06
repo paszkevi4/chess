@@ -31,8 +31,8 @@
 }
 
 .white-piece {
-    color: #fff;
-    -webkit-text-stroke: 0.1px #000;
+    color: #f00;
+    -webkit-text-stroke: 0.4px #000;
 }
 
 .black-piece {
