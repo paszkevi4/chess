@@ -1,18 +1,17 @@
-let row = (rowIndex, cellCount) => {
-    return new Array(cellCount)
-        .fill(null)
-        .map((_, cellIndex) => {
-            const isBlack = rowIndex % 2 ===0 ? cellIndex % 2 !== 0 : cellIndex % 2 === 0 ;
-            return `<div class="cell ${isBlack ? 'black' : 'white'}">${rowIndex}</div>`
+let cells = (row, rowIndex) =>
+    row
+        .map((piece, colIndex) => {
+            const isBlack = rowIndex % 2 ===0 ? colIndex % 2 !== 0 : colIndex % 2 === 0 ;
+            return `<div data-row=${rowIndex} data-col=${colIndex} class="cell ${isBlack ? 'black' : 'white'}">
+                ${piece ? piece.symbol : ''}
+            </div>`
         })
-        .join('');
-}
+        .join('')
 
 const renderBoard = (store) => {
-    let board = new Array(store.ROW_COUNT)
-        .fill(null)
-        .map((_, index) => `<div class='row'>${row(index, store.CELL_COUNT)}</div>`)
-        .join('');
+    let board = store.board
+        .map((row, rowIndex) => `<div class='row'>${cells(row, rowIndex)}</div>`)
+        .join('')
     return `
         <div id='board'>
             ${board}

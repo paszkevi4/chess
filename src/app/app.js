@@ -9,7 +9,7 @@ const app = (root) => {
             ${renderBoard(store)}
             ${renderBox(store.pieces)}
         `;
-        initEvents(root)
+        initEvents(root, store, render)
     };
 
     render();
