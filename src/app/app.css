@@ -19,25 +19,39 @@
 .cell {
     width: 40px;
     height: 40px;
-    background: #fff;
+    background: lightgrey;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: grey;
 }
 
 .black {
-    background: #000;
+    background: grey;
 }
 
 .white-piece {
     font-size: 25px;
     color: #fff;
-    -webkit-text-stroke: 0.4px #000;
+    -webkit-text-stroke: 0px #fff;
 }
 
 .black-piece {
     font-size: 25px;
     color: #000;
-    -webkit-text-stroke: 0.1px #fff;
+    -webkit-text-stroke: 0px #fff;
+}
+
+.vacant {
+    position: relative;
+}
+
+.vacant:after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 6px;
+    height: 6px;
+    background-color: yellow;
+    border-radius: 50%;
 }

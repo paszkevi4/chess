@@ -1,11 +1,11 @@
 let cells = (row, rowIndex) =>
     row
-        .map((piece, colIndex) => {
+        .map(( {piece, vacant} , colIndex) => {
             const isBlack = rowIndex % 2 ===0 ? colIndex % 2 !== 0 : colIndex % 2 === 0 ;
-            return `<div data-row=${rowIndex} data-col=${colIndex} 
-                class="cell ${isBlack ? 'black' : 'white'} ${piece ? piece.id > 19 ? 'black-piece' : 'white-piece' : ''}">
-                ${piece ? piece.symbol : ''}
-            </div>`
+            return (
+            `<div data-row=${rowIndex} data-col=${colIndex} class="cell ${ isBlack ? 'black' : 'white' } ${ vacant ? 'vacant' : '' } ${ piece ? piece.id > 19 ? 'black-piece' : 'white-piece' : '' }">
+                    ${piece ? piece.symbol : ''}
+            </div>`)
         })
         .join('')
 

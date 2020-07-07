@@ -12,10 +12,18 @@ const boardEvents = (root, store, render) => {
             const id = event.dataTransfer.getData('id');
             let piece = store.pieces.white.find( (_piece) => _piece.id == id );
             if (!piece) piece = store.pieces.black.find( (_piece) => _piece.id == id );
-            console.log ([row, col], id, piece);
-            store.board[+row][+col] = piece;
+            console.log (store.board);
+            store.board[+row][+col].piece = piece;
             render();
         });
+
+        element.addEventListener('click', (event) => {
+            const piece = store.board[+row][+col].piece;
+            if (!piece) {return}
+            store.board.map((_row) => {_row.map((_cell) => {_cell.vacant = true})})
+            console.log (store.board);
+            render();
+        })
     });
 };
 

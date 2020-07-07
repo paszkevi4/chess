@@ -1,15 +1,21 @@
-let CELL_COUNT = 8;
-let ROW_COUNT = CELL_COUNT;
+const CELL_COUNT = 8;
+const ROW_COUNT = CELL_COUNT;
+
+let cell = {
+    piece: null,
+    vacant: false,
+}
+
 let store = {
-    board: new Array(ROW_COUNT).fill(null).map(() => new Array(CELL_COUNT).fill(null)),
+    board: new Array(ROW_COUNT).fill(null).map(() => new Array(CELL_COUNT).fill(null).map(() => ({ ...cell }))),
     pieces: {
         white: [
-            {id: 11, type: 'pawn', symbol: '♟',},
-            {id: 13, type: 'knight', symbol: '♞',},
-            {id: 14, type: 'bishop', symbol: '♝',},
-            {id: 15, type: 'rook', symbol: '♜',},
-            {id: 19, type: 'queen', symbol: '♛',},
-            {id: 10, type: 'king',symbol: '♚',},
+            {id: 11, type: 'pawn', symbol: '♙',},
+            {id: 13, type: 'knight', symbol: '♘',},
+            {id: 14, type: 'bishop', symbol: '♗',},
+            {id: 15, type: 'rook', symbol: '♖',},
+            {id: 19, type: 'queen', symbol: '♕',},
+            {id: 10, type: 'king',symbol: '♔',},
         ],
         black: [
             {id: 21, type: 'pawn', symbol: '♟',},
