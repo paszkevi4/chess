@@ -25,6 +25,13 @@
     justify-content: center;
 }
 
+.piece-box {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: 20px auto;
+}
+
 .black {
     background: grey;
 }
@@ -54,4 +61,8 @@
     height: 6px;
     background-color: yellow;
     border-radius: 50%;
+}
+
+.selected {
+    color: red;
 }

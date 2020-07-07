@@ -1,5 +1,5 @@
-const CELL_COUNT = 8;
-const ROW_COUNT = CELL_COUNT;
+const CELL_COUNT = 8,
+    ROW_COUNT = CELL_COUNT;
 
 let cell = {
     piece: null,
@@ -8,6 +8,11 @@ let cell = {
 
 let store = {
     board: new Array(ROW_COUNT).fill(null).map(() => new Array(CELL_COUNT).fill(null).map(() => ({ ...cell }))),
+    selected: {
+        piece: null,
+        row: null,
+        col: null,
+    },
     pieces: {
         white: [
             {id: 11, type: 'pawn', symbol: '♙',},
