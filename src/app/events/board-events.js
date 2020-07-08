@@ -21,15 +21,26 @@ const boardEvents = (root, store, render) => {
 
         element.addEventListener('click', (event) => {
             const piece = store.board[row][col].piece;
+            if ( piece && !store.selected.piece ) {
+                store.selected = { piece, row, col }
+                store.board = pieceMoving(store.board, store.selected)
+            }
+            if ( piece && store.selected.piece ) {
+                if ( store.selected.piece.force === piece.force || !store.board[row][col].vacant ) {
+                    store.selected = { piece, row, col }
+                    store.board = pieceMoving(store.board, store.selected)
+                } else if ( store.board[row][col].vacant && store.selected.piece.force !== piece.force ) {
+                    store.board[row][col].piece = store.selected.piece
+                    store.board[store.selected.row][store.selected.col].piece = null;
+                    store.selected = { piece: null, row: null, col: null }
+                    store.board.map((_row) => {_row.map((_cell) => {_cell.vacant = false})});
+                }
+            }
             if ( !piece && store.board[row][col].vacant ) {
                 store.board[row][col].piece = store.selected.piece
                 store.board[store.selected.row][store.selected.col].piece = null;
                 store.selected = { piece: null, row: null, col: null }
                 store.board.map((_row) => {_row.map((_cell) => {_cell.vacant = false})});
-            } else if ( piece ) {
-                store.selected = { piece, row, col }
-                console.log (store.selected);
-                store.board = pieceMoving(store.board, store.selected)
             }
             render();
         })

@@ -31,6 +31,27 @@ let store = {
             {id: 20, type: 'king', force: 'black', symbol: '♚',},
         ],
     },
+
 }
+
+store.board[1].map( (cell) => {cell.piece = store.pieces.black[0]} )
+store.board[0][0].piece = store.pieces.black[3]
+store.board[0][1].piece = store.pieces.black[1]
+store.board[0][2].piece = store.pieces.black[2]
+store.board[0][3].piece = store.pieces.black[4]
+store.board[0][4].piece = store.pieces.black[5]
+store.board[0][5].piece = store.pieces.black[2]
+store.board[0][6].piece = store.pieces.black[1]
+store.board[0][7].piece = store.pieces.black[3]
+
+store.board[6].map( (cell) => {cell.piece = store.pieces.white[0]} )
+store.board[7][0].piece = store.pieces.white[3]
+store.board[7][1].piece = store.pieces.white[1]
+store.board[7][2].piece = store.pieces.white[2]
+store.board[7][3].piece = store.pieces.white[4]
+store.board[7][4].piece = store.pieces.white[5]
+store.board[7][5].piece = store.pieces.white[2]
+store.board[7][6].piece = store.pieces.white[1]
+store.board[7][7].piece = store.pieces.white[3]
 
 export default store
