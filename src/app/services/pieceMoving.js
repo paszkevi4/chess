@@ -1,59 +1,42 @@
-const vacantCellsSelection = (board, row, col) => {
-    if ( row >= 0 && row <= 7 && col >= 0 && col <= 7) {
-        board[row][col].vacant = true;
-    }
-}
+import whitePawn from './vacantCounters/pawns/whitePawn.js'
+import blackPawn from './vacantCounters/pawns/blackPawn.js'
+import bishop from './vacantCounters/bishop.js'
+import knight from './vacantCounters/knight.js'
+import rook from './vacantCounters/rook.js'
+import queen from './vacantCounters/queen.js'
+import king from './vacantCounters/king.js'
 
 const pieceMoving = (board, selected) => {
     const { piece, row, col } = selected
     console.log(board)
     board.map((_row) => {_row.map((_cell) => {_cell.vacant = false})});
     switch (piece.type) {
-        case 'Pawn':
-            vacantCellsSelection(board, row-1, col);
+        case 'pawn':
+            switch (piece.force) {
+                case 'white':
+                    console.log(piece.force)
+                    whitePawn(board, selected);
+                    break
+                case 'black':
+                    console.log(piece.force)
+                    blackPawn(board, selected);
+                    break
+            }
             break
         case 'knight':
-            vacantCellsSelection(board, row-2, col-1);
-            vacantCellsSelection(board, row-2, +col+1);
-            vacantCellsSelection(board, row-1, col-2);
-            vacantCellsSelection(board, row-1, +col+2);
-            vacantCellsSelection(board, +row+1, col-2);
-            vacantCellsSelection(board, +row+1, +col+2);
-            vacantCellsSelection(board, +row+2, col-1);
-            vacantCellsSelection(board, +row+2, +col+1);
-
+            knight(board, selected);
             break
         case 'bishop':
-            for ( let i = 0; i < 8; i++ ) {
-                vacantCellsSelection(board, +row+i, +col+i);
-                vacantCellsSelection(board, row-i, col-i);
-                vacantCellsSelection(board, +row+i, col-i);
-                vacantCellsSelection(board, row-i, +col+i);
-            }
+            bishop(board, selected);
             break
         case 'rook':
-            for ( let i = 0; i < 8; i++ ) {
-                vacantCellsSelection(board, i, col);
-                vacantCellsSelection(board, row, i);
-            }
+            rook(board, selected);
             break
         case 'queen':
-            for ( let i = 0; i < 8; i++ ) {
-                vacantCellsSelection(board, i, col);
-                vacantCellsSelection(board, row, i);
-                vacantCellsSelection(board, +row+i, +col+i);
-                vacantCellsSelection(board, row-i, col-i);
-                vacantCellsSelection(board, +row+i, col-i);
-                vacantCellsSelection(board, row-i, +col+i);
-            }
+            queen(board, selected);
             break
         case 'king':
-
-            for ( let i = -1; i < 2; ++i ) {
-                vacantCellsSelection(board, row, +col+i);
-                vacantCellsSelection(board, +row+1, +col+i);
-                vacantCellsSelection(board, row-1, +col+i);
-            }
+            king(board, selected);
             break
         default:
             return;
