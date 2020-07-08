@@ -6,7 +6,7 @@ let cells = (row, rowIndex, selected) =>
             `<div data-row=${rowIndex} data-col=${colIndex} class="cell 
                 ${ isBlack ? 'black' : 'white' } 
                 ${ vacant ? 'vacant' : '' } 
-                ${ piece ? piece.id > 19 ? 'black-piece' : 'white-piece' : '' }
+                ${ piece ? piece.id > 19 ? 'piece black-piece' : 'piece white-piece' : '' }
                 ${ selected.piece && selected.row == rowIndex && selected.col == colIndex ? 'selected' : '' }">
                     ${piece ? piece.symbol : ''}
             </div>`)

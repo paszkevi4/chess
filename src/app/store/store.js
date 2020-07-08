@@ -15,7 +15,7 @@ let store = {
     },
     pieces: {
         white: [
-            {id: 11, type: 'pawn', symbol: '♙',},
+            {id: 11, type: 'Pawn', symbol: '♙',},
             {id: 13, type: 'knight', symbol: '♘',},
             {id: 14, type: 'bishop', symbol: '♗',},
             {id: 15, type: 'rook', symbol: '♖',},
