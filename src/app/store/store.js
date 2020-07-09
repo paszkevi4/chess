@@ -13,6 +13,12 @@ let store = {
         row: null,
         col: null,
     },
+    castling: {
+        shortWhite: false,
+        longWhite: false,
+        shortBlack: false,
+        longBlack: false,
+    },
     pieces: {
         white: [
             {id: 11, type: 'pawn', force: 'white', symbol: '♙',},

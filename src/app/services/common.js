@@ -14,5 +14,4 @@ export const check = (board, row, col, selected) => {
         return a
             && board[row][col].piece
     }
-
 }

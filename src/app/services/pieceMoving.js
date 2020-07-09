@@ -4,21 +4,19 @@ import bishop from './vacantCounters/bishop.js'
 import knight from './vacantCounters/knight.js'
 import rook from './vacantCounters/rook.js'
 import queen from './vacantCounters/queen.js'
-import king from './vacantCounters/king.js'
+import whiteKing from './vacantCounters/kings/whiteKing.js'
+import blackKing from './vacantCounters/kings/blackKing.js'
 
 const pieceMoving = (board, selected) => {
     const { piece, row, col } = selected
-    console.log(board)
     board.map((_row) => {_row.map((_cell) => {_cell.vacant = false})});
     switch (piece.type) {
         case 'pawn':
             switch (piece.force) {
                 case 'white':
-                    console.log(piece.force)
                     whitePawn(board, selected);
                     break
                 case 'black':
-                    console.log(piece.force)
                     blackPawn(board, selected);
                     break
             }
@@ -36,7 +34,14 @@ const pieceMoving = (board, selected) => {
             queen(board, selected);
             break
         case 'king':
-            king(board, selected);
+            switch ( piece.force) {
+                case 'white':
+                    whiteKing(board, selected);
+                    break
+                case 'black':
+                    blackKing(board, selected);
+                    break
+            }
             break
         default:
             return;
